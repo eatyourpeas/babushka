@@ -1,0 +1,11 @@
+.image {
+    padding: 20px;
+}
+
+ion-input {
+    --padding-start: 40px;
+    --padding-end: 40px;
+    --color: var(--ion-color-primary);
+    --placeholder-font-weight: bold;
+    --background: var(--ion-color-secondary);
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color='secondary'>
+  <div *ngIf='showSpinner' id='spinner'>
+    <ion-spinner class='spinner' name='crescent'></ion-spinner>
+  </div>
+  <div class="image">
+    <ion-img src='assets/images/icons/icon-512x512.png'></ion-img>
+  </div>
+  <form [formGroup]='signInForm' class='padding'>
+    <ion-item lines='none' color='secondary'>
+      <ion-label position='floating' color='primary'>Email: </ion-label>
+      <ion-input formControlName='email' type='email' placeholder='Email'></ion-input>
+    </ion-item>
+    <ion-item lines='none' color='secondary'>
+      <ion-label color='primary' position='floating'>Password: </ion-label>
+      <ion-input formControlName='password' type='password' placeholder='Password'></ion-input>
+    </ion-item>
+    <ion-item lines='none' color='secondary'>
+      <ion-button fill='clear' [routerLink]="['../reset-password']">Forgotten your password?</ion-button>
+    </ion-item>
+    <ion-item lines='none' color='secondary'>
+      <ion-button type='submit' (click)='signIn()' [disabled]='!signInForm.valid'>Sign In</ion-button>
+    </ion-item>
+  </form>
+  <ion-button fill='clear' [routerLink]="['../sign-up']">Need an account?</ion-button>
+</ion-content>

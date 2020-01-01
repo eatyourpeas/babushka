@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding" color='secondary'>
+  <div *ngIf='showSpinner' id='spinner'>
+    <ion-spinner class='spinner' name='crescent'></ion-spinner>
+  </div>
+  <img class='image' src='assets/images/icons/icon-512x512.png'/>
+  <form [formGroup]='signUpForm'>
+    <ion-item>
+      <ion-input formControlName='email' type='email' placeholder='Email'></ion-input>
+      <div *ngIf="signUpForm.controls.email.hasError('required')">
+        <ion-label color='danger'>Email required</ion-label>
+      </div>
+      <div *ngIf="signUpForm.controls.email.hasError('email')">
+        <ion-label color='danger'>Please enter a valid email address.</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName='password' type='password' placeholder='Password'></ion-input>
+      <div *ngIf="signUpForm.controls.password.hasError('required')">
+        <ion-label color='danger'>Password required.</ion-label>
+      </div>
+      <div *ngIf="signUpForm.controls.password.hasError('minlength')">
+        <ion-label color='danger'>Password must be 8 characters.</ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName='confirmPassword' type='password' placeholder='Confirm Password'></ion-input>
+      <div *ngIf="signUpForm.controls.confirmPassword.hasError('required')">
+        <ion-label color='danger'>Password required.</ion-label>
+      </div>
+      <div *ngIf="signUpForm.controls.confirmPassword.hasError('NoPasswordMatch')">
+        <ion-label color='danger'>Passwords must match.</ion-label>
+      </div>
+    </ion-item>
+    <ion-item lines='none'>
+      <ion-button type='submit' [disabled]='!signUpForm.valid' (click)='signUp()'>Sign Up</ion-button>
+    </ion-item>
+    <ion-item lines='none'>
+      <ion-label>Or sign up with one of these...</ion-label>
+    </ion-item>
+    <ion-item lines='none'>
+      <ion-buttons color='primary'>
+        <ion-button class="icon-only" (click)='signUpWithTwitter()'><ion-icon name='logo-twitter' color='primary'></ion-icon></ion-button>
+        <ion-button class="icon-only" (click)='signUpWithFacebook()'><ion-icon name='logo-facebook' color='primary'></ion-icon></ion-button>
+        <ion-button class="icon-only" (click)='signUpWithGoogle()'><ion-icon name='logo-google' color='primary'></ion-icon></ion-button>
+      </ion-buttons>
+    </ion-item>
+  </form>
+</ion-content>

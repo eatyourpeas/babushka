@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color='secondary'>
+  <div *ngIf='showSpinner' id='spinner'>
+    <ion-spinner class='spinner' name='crescent'></ion-spinner>
+  </div>
+  <img class='image' src='assets/images/icons/icon-512x512.png'/>
+  <form [formGroup]='profileForm'>
+    <ion-item>
+      <ion-input formControlName='email' type='email' placeholder='Email'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select formControlName='grade'>
+        <ion-select-option *ngFor='let iteratedGrade of grades' value={{iteratedGrade.short}}>{{iteratedGrade.long}}</ion-select-option>
+      </ion-select>
+      <!-- <ion-input formControlName='grade' type='text' placeholder='Grade'></ion-input> -->
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName='screenName' type='text' placeholder='Screen Name'></ion-input>
+    </ion-item>
+    <ion-item lines='none'>
+      <ion-button type='submit' (click)='updateProfile()'>Update Profile</ion-button>
+    </ion-item>
+  </form>
+
+</ion-content>

@@ -14,6 +14,22 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./pages/user-management/sign-in/sign-in.module').then( m => m.SignInPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/user-management/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./pages/user-management/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  {
+    path: 'profile/:uid',
+    loadChildren: () => import('./pages/user-management/profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 
